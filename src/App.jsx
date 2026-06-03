@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect } from "react";
 import {
   Settings, FileText, Calculator, Home, Plus, Trash2,
   ChevronDown, ChevronUp, Save, AlertCircle, CheckCircle,
@@ -68,9 +68,8 @@ function Label({ children, color=C.muted }) {
 function Value({ children, size=18, color=C.text }) {
   return <div style={{ fontSize:size, color, fontWeight:700 }}>{children}</div>;
 }
-// Forçando o WeasyPrint a renderizar o fundo da badge corretamente em impressão
 function Badge({ label, color }) {
-  return <span style={{ background:color, color:"#000", borderRadius:20, padding:"2px 10px", fontSize:11, fontWeight:700, display:"inline-block" }}>{label}</span>;
+  return <span style={{ background:color+"22", color, border:`1px solid ${color}44`, borderRadius:20, padding:"2px 10px", fontSize:11, fontWeight:700 }}>{label}</span>;
 }
 function NumInput({ label, value, onChange, prefix="R$", step="0.01", note }) {
   return (
@@ -295,7 +294,7 @@ function SimuladorScreen({ sim, setSim, cfg }) {
         <NumInput label="Total recebido do cliente" value={recebido} onChange={v=>set("recebido",v)} note="Soma de todas as parcelas" />
       </Card>
       <Card>
-        <SectionTitle color={C.green}>Custos de Production</SectionTitle>
+        <SectionTitle color={C.green}>Custos de Produção</SectionTitle>
         <div style={{ display:"grid", gridTemplateColumns:"1fr 1fr", gap:8 }}>
           <NumInput label="Peças (NF total)" value={pecas} onChange={v=>set("pecas",v)} />
           <NumInput label="Estamparia" value={estamparia} onChange={v=>set("estamparia",v)} />
